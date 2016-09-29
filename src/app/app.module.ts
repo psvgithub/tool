@@ -5,6 +5,8 @@ import { HttpModule } from '@angular/http';
 import { MaterialModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
+import { HomeModule } from './home/home.module';
+import { appRouting, appRoutingProviders }  from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -14,9 +16,11 @@ import { AppComponent } from './app.component';
     BrowserModule,
     FormsModule,
     HttpModule,
-    MaterialModule.forRoot()
+    MaterialModule.forRoot(),
+    HomeModule,
+    appRouting
   ],
-  providers: [],
+  providers: [appRoutingProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
