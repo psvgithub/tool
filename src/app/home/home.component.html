@@ -4,3 +4,5 @@
   home page
 </p>
 
+<button (click)="authService.logout()" *ngIf="authService.isLoggedIn()">Logout</button>
+
