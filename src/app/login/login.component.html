@@ -21,9 +21,7 @@
         <input type="password" class="form-control" id="password" required [(ngModel)]="password" name="password">
       </div>
         <button (click)="login()" *ngIf="!authService.isLoggedIn()">Login</button>
-        <button (click)="logout()" *ngIf="authService.isLoggedIn()">Logout</button>
-        <button (click)="test()">Test</button>
+        <button (click)="logout()" *ngIf="authService.isLoggedIn()">Logout</button> 
     </form>
 </div> 
 
-<button (click)="test()">Test</button>
