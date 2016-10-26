@@ -37,12 +37,14 @@ export class AuthService {
             )
             .map(res => res.json())
             .map((res) => {
-                if (res.success) {
+                if (res.authenticate) {
                     localStorage.setItem('auth_token', res.auth_token);
                     this.loggedIn = true;
-                }
-
-                return res.success;  
+                    return res.isAuthenticate; 
+                } else {
+                    this.loggedIn = false;
+                    return res.authenticate;
+                }                
             });
     }
 

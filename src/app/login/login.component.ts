@@ -34,6 +34,9 @@ export class LoginComponent {
         // Redirect the user
         this.router.navigate([redirect]);
       }
+      if (!this.authService.isLoggedIn()){
+        alert('bad credentials');
+      }
     });
 
   }
