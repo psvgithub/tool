@@ -1,8 +1,16 @@
+<html>
 
+<head>
+	<!-- Material Design Lite -->
+	<script src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+	<link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.indigo-pink.min.css">
+	<!-- Material Design icon font -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
 
-<p>
-  home page
-</p>
+<body>
+	<p>home page</p>
+	<button class="mdl-button mdl-js-button mdl-button--raised" (click)="authService.logout()" *ngIf="authService.isLoggedIn()">Logout</button>
+</body>
 
-<button (click)="authService.logout()" *ngIf="authService.isLoggedIn()">Logout</button>
-
+</html>
