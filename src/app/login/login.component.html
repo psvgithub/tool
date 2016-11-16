@@ -12,16 +12,10 @@
 	<!-- Textfield with Floating Label -->
 
 	<form action="#">
-		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-			<input class="mdl-textfield__input" type="text" id="username" required [(ngModel)]="username" name="username">
-			<label for="username" class="mdl-textfield__label">Name</label>
-		</div>
-		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-			<label class="mdl-textfield__label" for="password">Password</label>
-			<input type="password" class="mdl-textfield__input" id="password" required [(ngModel)]="password" name="password">
-		</div>
-		<button class="mdl-button mdl-js-button mdl-button--raised" (click)="login()" *ngIf="!authService.isLoggedIn()">Login</button>
-		<button class="mdl-button mdl-js-button mdl-button--raised" (click)="logout()" *ngIf="authService.isLoggedIn()">Logout</button>
+		<md-input class="demo-full-width" type="text" id="username" required [(ngModel)]="username" name="username" placeholder="Name"></md-input>
+		<md-input class="demo-full-width" type="password" id="password" required [(ngModel)]="password" name="password" placeholder="Password"></md-input>
+		<button md-raised-button color="primary" (click)="login()" *ngIf="!authService.isLoggedIn()">Login</button>
+		<button md-raised-button color="primary" (click)="logout()" *ngIf="authService.isLoggedIn()">Logout</button>
 	</form>
 </body>
 

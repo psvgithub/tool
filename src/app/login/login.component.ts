@@ -1,17 +1,20 @@
-import { Component, OnInit } from '@angular/core';
-import { Router }      from '@angular/router';
+import { Component, OnInit} from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from './auth.service';
 import { TestUser } from '../model/testUser';
-import { Observable }     from 'rxjs/Observable';
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/toPromise';
+
+
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'] 
+  styleUrls: ['./login.component.css']
 })
 
-export class LoginComponent {
+export class LoginComponent{
+  
   testUser: TestUser;
   errorMessage: string;
   username: string;
@@ -34,7 +37,7 @@ export class LoginComponent {
         // Redirect the user
         this.router.navigate([redirect]);
       }
-      if (!this.authService.isLoggedIn()){
+      if (!this.authService.isLoggedIn()) {
         alert('bad credentials');
       }
     });
@@ -51,15 +54,16 @@ export class LoginComponent {
     this.authService.logout();
     this.setMessage();
   }
-  test(){ 
+  test() {
 
-        console.log('start test()');
-        this.authService.test()
-                   .subscribe(
-                     testUser => this.testUser = testUser,
-                     error =>  this.errorMessage = <any>error);
-        console.log('testUser.name : ' + this.testUser.name); 
-        console.log('testUser.age : ' + this.testUser.age); 
-        console.log('end ping()'); 
+    console.log('start test()');
+    this.authService.test()
+      .subscribe(
+      testUser => this.testUser = testUser,
+      error => this.errorMessage = <any>error);
+    console.log('testUser.name : ' + this.testUser.name);
+    console.log('testUser.age : ' + this.testUser.age);
+    console.log('end ping()');
   }
+
 }
