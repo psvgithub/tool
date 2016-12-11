@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import { AuthService } from '../login/auth.service'; 
+import { Routes, RouterModule, Router } from '@angular/router';
 
 @Component({
   selector: 'tool-home',
@@ -9,7 +10,7 @@ import { AuthService } from '../login/auth.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private http: Http, public authService: AuthService) { }
+  constructor(private http: Http, public authService: AuthService, public router: Router) { }
 
   ngOnInit() {
   }
@@ -25,4 +26,10 @@ export class HomeComponent implements OnInit {
       .map(res => res.json());
   }
 
+  logout(){
+    this.authService.logout();
+    this.router.navigate(['login']);
+  }
+
 }
+ 
