@@ -43,13 +43,6 @@ export class LoginComponent{
     });
 
   }
-  // login() {
-  //   this.authService.login(this.name, this.password).subscribe((result) => {
-  //     if (result) {
-  //       this.router.navigate(['home']);
-  //     }
-  //   });
-  // }
   logout() {
     this.authService.logout();
     this.setMessage();
