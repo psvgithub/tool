@@ -5,8 +5,6 @@ import { TestUser } from '../model/testUser';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/toPromise';
 
-
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -47,16 +45,4 @@ export class LoginComponent{
     this.authService.logout();
     this.setMessage();
   }
-  test() {
-
-    console.log('start test()');
-    this.authService.test()
-      .subscribe(
-      testUser => this.testUser = testUser,
-      error => this.errorMessage = <any>error);
-    console.log('testUser.name : ' + this.testUser.name);
-    console.log('testUser.age : ' + this.testUser.age);
-    console.log('end ping()');
-  }
-
 }

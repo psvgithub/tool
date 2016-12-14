@@ -1,11 +1,9 @@
 <html>
-
 <head>
+	<link rel="stylesheet" href="/material.min.css">
+	<script src="/material.min.js"></script>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-	<link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.indigo-pink.min.css">
-	<script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
 </head>
-
 <body>
 	<div class="mdl-grid">
 		<div class="mdl-cell mdl-cell--4-col"></div>
@@ -19,18 +17,10 @@
 					<div class="mdl-grid">
 						<div class="mdl-cell mdl-cell--12-col">
 							<md-input class="demo-full-width" type="text" id="username" required [(ngModel)]="username" name="username" placeholder="Name"></md-input>
-							<!--<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-								<input class="mdl-textfield__input" type="text" id="username" required [(ngModel)]="username" name="username">
-								<label class="mdl-textfield__label" for="username">Name</label>
-							</div>-->
 						</div>
 					</div>
 					<div class="mdl-grid">
 						<div class="mdl-cell mdl-cell--12-col">
-							<!--<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-								<input class="mdl-textfield__input" type="password" id="password" required [(ngModel)]="password" name="password">
-								<label class="mdl-textfield__label" for="password">Password</label>
-							</div>-->
 							<md-input class="demo-full-width" type="password" id="password" required [(ngModel)]="password" name="password" placeholder="Password"></md-input>
 						</div>
 					</div>
