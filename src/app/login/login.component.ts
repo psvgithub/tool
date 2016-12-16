@@ -12,20 +12,21 @@ import 'rxjs/add/operator/toPromise';
 })
 
 export class LoginComponent{
-  
-  testUser: TestUser;
-  errorMessage: string;
   username: string;
   password: string;
-  message: string;
+  tryingToLogInMessage: string;
+  isBadCredentials: boolean;
+  badCredentialsMessage = 'Bad Credentials';
+
   constructor(public authService: AuthService, public router: Router) {
+    this.isBadCredentials = false;
     this.setMessage();
   }
   setMessage() {
-    this.message = 'Logged ' + (this.authService.isLoggedIn() ? 'in' : 'out');
+    this.tryingToLogInMessage = 'Logged ' + (this.authService.isLoggedIn() ? 'in' : 'out');
   }
   login() {
-    this.message = 'Trying to log in ...';
+    this.tryingToLogInMessage = 'Trying to log in ...';
     this.authService.login(this.username, this.password).subscribe(() => {
       this.setMessage();
       if (this.authService.isLoggedIn()) {
@@ -34,9 +35,10 @@ export class LoginComponent{
         let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/home';
         // Redirect the user
         this.router.navigate([redirect]);
+        this.isBadCredentials = false;
       }
       if (!this.authService.isLoggedIn()) {
-        alert('bad credentials');
+        this.isBadCredentials = true;
       }
     });
 

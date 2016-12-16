@@ -1,9 +1,11 @@
 <html>
+
 <head>
 	<link rel="stylesheet" href="/material.min.css">
 	<script src="/material.min.js"></script>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
+
 <body>
 	<div class="mdl-grid">
 		<div class="mdl-cell mdl-cell--4-col"></div>
@@ -13,23 +15,37 @@
 					<h2 class="mdl-card__title-text">Login page</h2>
 				</div>
 				<form action="#">
-				<div class="mdl-card__actions mdl-card--border">
-					<div class="mdl-grid">
-						<div class="mdl-cell mdl-cell--12-col">
-							<md-input class="demo-full-width" type="text" id="username" required [(ngModel)]="username" name="username" placeholder="Name"></md-input>
+					<div class="mdl-card__actions mdl-card--border">
+						<div *ngIf="isBadCredentials">
+							<div class="mdl-grid">
+								<div class="mdl-cell mdl-cell--12-col">
+									<div style="color: red">Bad Credentials</div>
+								</div>
+							</div>
+						</div>
+						<div *ngIf="!isBadCredentials">
+							<div class="mdl-grid">
+								<div class="mdl-cell mdl-cell--12-col">
+									<br>
+								</div>
+							</div>
+						</div>
+						<div class="mdl-grid">
+							<div class="mdl-cell mdl-cell--12-col">
+								<md-input class="demo-full-width" type="text" id="username" required [(ngModel)]="username" name="username" placeholder="Name"></md-input>
+							</div>
+						</div>
+						<div class="mdl-grid">
+							<div class="mdl-cell mdl-cell--12-col">
+								<md-input class="demo-full-width" type="password" id="password" required [(ngModel)]="password" name="password" placeholder="Password"></md-input>
+							</div>
+						</div>
+						<div class="mdl-grid">
+							<div class="mdl-cell mdl-cell--12-col">
+								<button (click)="login()" *ngIf="!authService.isLoggedIn()" class="mdl-button mdl-js-button mdl-js-ripple-effect">Login</button>
+							</div>
 						</div>
 					</div>
-					<div class="mdl-grid">
-						<div class="mdl-cell mdl-cell--12-col">
-							<md-input class="demo-full-width" type="password" id="password" required [(ngModel)]="password" name="password" placeholder="Password"></md-input>
-						</div>
-					</div>
-					<div class="mdl-grid">
-						<div class="mdl-cell mdl-cell--12-col">							
-							<button (click)="login()" *ngIf="!authService.isLoggedIn()" class="mdl-button mdl-js-button mdl-js-ripple-effect" >Login</button>
-						</div>
-					</div>
-				</div>
 				</form>
 			</div>
 		</div>
