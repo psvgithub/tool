@@ -7,11 +7,9 @@ import { RouterModule, Router } from '@angular/router';
 import { AppComponent } from './app.component';
 import { HomeModule } from './home/home.module';
 import { HelpModule } from './help/help.module';
-import { ContactModule } from './contact/contact.module';
 import { appRouting, appRoutingProviders }  from './app-routing.module';
 import { LoginComponent }       from './login/login.component';
 import { HelpComponent }       from './help/help.component';
-import { ContactComponent }       from './contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +22,6 @@ import { ContactComponent }       from './contact/contact.component';
     HttpModule,
     HomeModule,
     HelpModule,
-    ContactModule,
     appRouting,
   ],
   providers: [appRoutingProviders],

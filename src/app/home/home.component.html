@@ -1,9 +1,4 @@
-<html>
-<head>
 
-</head>
-<body>
-	<p>home page</p>		
-</body>
-</html>
+	<p>home page</p>
+	<button id="signInButton" type="submit" class="ibm-btn-sec ibm-btn-blue-50" (click)="logout()" *ngIf="authService.isLoggedIn()">Sign out</button>		
 

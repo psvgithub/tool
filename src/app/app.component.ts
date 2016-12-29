@@ -21,5 +21,4 @@ export class AppComponent {
   login(){
     this.router.navigate(['login']);
   }
-
 }

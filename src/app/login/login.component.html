@@ -1,12 +1,31 @@
-<html>
-
-<head>
-
-</head>
-
-<body>
-	<input type="text" id="username" required [(ngModel)]="username" name="username" placeholder="Name" />
-	<input type="password" id="password" required [(ngModel)]="password" name="password" placeholder="Password" />
-	<button (click)="login()" *ngIf="!authService.isLoggedIn()" class="mdl-button mdl-js-button mdl-js-ripple-effect">Login</button>
-</body>
-</html>
+<div class="ibm-band ibm-background-blue-80 ibm-alternate-background">
+	<div class="ibm-columns" style="padding-bottom: 0;">
+		<div class="ibm-col-1-1">
+			<span class="ibm-h3">Sign in as an IBMer with your intranet ID</span>
+		</div>
+	</div>
+</div>
+<div class="ibm-band ibm-background-neutral-white-10">
+	<form id="TDALogonForm" method="post" action="doLogon" class="tdaForm ibm-column-form">
+		<div class="ibm-columns">
+			<div class="ibm-col-1-1">
+				<p class="ibm-item-note text">Please sign in using your Internet address as listed in <a href="https://w3.ibm.com/newbp/">Blue Pages</a>.</p>
+				<p>
+					<label for="login">Intranet ID: <span class="ibm-bold ibm-h4 ibm-textcolor-red-50">*</span></label>
+					<span>
+						<input type="text" value="" size="40" name="login" [(ngModel)]="username" id="login" placeholder="Ex: johnsmith@us.ibm.com">
+					</span>
+				</p>
+				<p>
+					<label for="password">Password: <span class="ibm-bold ibm-h4 ibm-textcolor-red-50">*</span></label>
+					<span>
+						<input type="password" value="" size="40" name="password" id="password" [(ngModel)]="password" autocomplete="off" readonly onfocus="this.removeAttribute('readonly');">
+					</span>
+				</p>
+				<p class="ibm-btn-row">
+					<button id="signInButton" type="submit" class="ibm-btn-sec ibm-btn-blue-50" (click)="login()">Sign in</button>
+				</p>
+			</div>
+		</div>
+	</form>
+</div>
