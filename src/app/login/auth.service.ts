@@ -6,6 +6,7 @@ import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/delay';
 import { TestUser } from '../model/testUser';
 import 'rxjs/add/operator/toPromise';
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class AuthService {
@@ -16,13 +17,8 @@ export class AuthService {
         this.loggedIn = !!localStorage.getItem('auth_token');
     }
 
-
     // store the URL so we can redirect after logging in
     redirectUrl: string;
-
-    // login(): Observable<boolean> {
-    //     return Observable.of(true).delay(1000).do(val => this.isLoggedIn = true);
-    // }
 
     login(username, password) {
         let headers = new Headers();
