@@ -11,8 +11,6 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class AuthService {
     private loggedIn: boolean = false;
-    testUrl = 'http://localhost:8080/portal/ajaxtest';
-    private pingUrl = 'http://localhost:8080/portal/ajaxtest';  // ping backend
     constructor(private http: Http) {
         this.loggedIn = !!localStorage.getItem('auth_token');
     }
@@ -22,9 +20,7 @@ export class AuthService {
 
     login(username, password) {
         let headers = new Headers();
-        
         headers.append('Content-Type', 'application/json');
-
         return this.http
             .post(
             'http://localhost:8080/portal/auth',
@@ -36,11 +32,11 @@ export class AuthService {
                 if (res.authenticate) {
                     localStorage.setItem('auth_token', res.auth_token);
                     this.loggedIn = true;
-                    return res.isAuthenticate; 
+                    return res.isAuthenticate;
                 } else {
                     this.loggedIn = false;
                     return res.authenticate;
-                }                
+                }
             });
     }
 
@@ -53,15 +49,9 @@ export class AuthService {
         return this.loggedIn;
     }
 
-    public test(): Observable<TestUser>{
-        return this.http.get(this.pingUrl)
-            .map(this.extractTestData)
-            .catch(this.handleError); 
-    }
-
     private extractData(res: Response) {
         let body = res.json();
-        console.log('body : ' + body); 
+        console.log('body : ' + body);
         return body.data || {};
     }
 
