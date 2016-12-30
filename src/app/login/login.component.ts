@@ -36,6 +36,7 @@ export class LoginComponent{
         // Redirect the user
         this.router.navigate([redirect]);
         this.isBadCredentials = false;
+        showAsLoggedIn(this.username);
       }
       if (!this.authService.isLoggedIn()) {
         this.isBadCredentials = true;
