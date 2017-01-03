@@ -9,12 +9,12 @@ import { HomeModule } from './home/home.module';
 import { HelpModule } from './help/help.module';
 import { appRouting, appRoutingProviders }  from './app-routing.module';
 import { LoginComponent }       from './login/login.component';
-import { HelpComponent }       from './help/help.component';
+import { LogoutModule } from './logout/logout.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent    
   ],
   imports: [
     BrowserModule,
@@ -22,6 +22,7 @@ import { HelpComponent }       from './help/help.component';
     HttpModule,
     HomeModule,
     HelpModule,
+    LogoutModule,
     appRouting,
   ],
   providers: [appRoutingProviders],

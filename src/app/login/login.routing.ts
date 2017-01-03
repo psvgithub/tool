@@ -1,11 +1,11 @@
 import { Routes }         from '@angular/router';
-import { AuthGuardService }      from './auth-guard.service';
-import { AuthService }    from './auth.service';
+import { AuthGuardService }      from '../service/auth-guard.service';
+import { AuthService }    from '../service/auth.service';
 import { LoginComponent } from './login.component';
 export const loginRoutes: Routes = [
   { path: 'login', component: LoginComponent }
 ];
-export const authProviders = [
+export const loginAuthProviders = [
   AuthGuardService,
   AuthService
 ];

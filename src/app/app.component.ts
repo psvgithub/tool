@@ -1,24 +1,40 @@
-import { Component } from '@angular/core';
+import { Component, AfterViewInit, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from './login/auth.service';
+import { AuthService } from './service/auth.service';
 
 @Component({
   selector: 'tool-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'TOOL';
   
   constructor(public authService: AuthService, public router: Router) {
   }
-    
-  logout(){
-    this.authService.logout();
-    this.login();
-  }
 
   login(){
     this.router.navigate(['login']);
+  }
+
+  // ngAfterContentInit() {
+  //   if(this.authService.isLoggedIn()){
+  //     showAsLoggedIn(localStorage.getItem('userName'));
+  //   }  
+  // }
+ngOnInit(){
+  setTimeout(() => {
+            // run jQuery stuff here
+      }, 0);
+    if(this.authService.isLoggedIn()){
+      showAsLoggedIn(localStorage.getItem('userName'));
+    } 
+}
+
+
+  ngAfterViewInit() {
+    // if(this.authService.isLoggedIn()){
+    //   showAsLoggedIn(localStorage.getItem('userName'));
+    // }
   }
 }

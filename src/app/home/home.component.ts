@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Http, Headers } from '@angular/http';
-import { AuthService } from '../login/auth.service'; 
+import { AuthService } from '../service/auth.service'; 
 import { Routes, RouterModule, Router } from '@angular/router';
 
 @Component({
@@ -13,6 +13,9 @@ export class HomeComponent implements OnInit {
   constructor(private http: Http, public authService: AuthService, public router: Router) { }
 
   ngOnInit() {
+    // if(this.authService.isLoggedIn()){
+    //   showAsLoggedIn(localStorage.getItem('userName'));
+    // }    
   }
 
   getRole() {
@@ -25,11 +28,5 @@ export class HomeComponent implements OnInit {
       .get('/getRole', { headers }) 
       .map(res => res.json());
   }
-
-  logout(){
-    this.authService.logout();
-    this.router.navigate(['login']);
-  }
-
 }
  

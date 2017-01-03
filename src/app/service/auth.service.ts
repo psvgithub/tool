@@ -4,7 +4,6 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/delay';
-import { TestUser } from '../model/testUser';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
 
@@ -31,7 +30,8 @@ export class AuthService {
             .map((res) => {
                 if (res.authenticate) {
                     localStorage.setItem('auth_token', res.auth_token);
-                    this.loggedIn = true;
+                    localStorage.setItem('userName', res.userName);                    
+                    this.loggedIn = true;                                       
                     return res.authenticate;
                 } else {
                     this.loggedIn = false;
@@ -42,6 +42,7 @@ export class AuthService {
 
     logout(): void {
         localStorage.removeItem('auth_token');
+        localStorage.removeItem('userName');
         this.loggedIn = false;
     }
 

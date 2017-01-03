@@ -1,7 +1,6 @@
 import { Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from './auth.service';
-import { TestUser } from '../model/testUser';
+import { AuthService } from '../service/auth.service';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/toPromise';
 
@@ -22,6 +21,7 @@ export class LoginComponent{
     this.isBadCredentials = false;
     this.setMessage();
   }
+
   setMessage() {
     this.tryingToLogInMessage = 'Logged ' + (this.authService.isLoggedIn() ? 'in' : 'out');
   }
@@ -36,16 +36,12 @@ export class LoginComponent{
         // Redirect the user
         this.router.navigate([redirect]);
         this.isBadCredentials = false;
-        showAsLoggedIn(this.username);
+        showAsLoggedIn(localStorage.getItem('userName'));                 
       }
       if (!this.authService.isLoggedIn()) {
         this.isBadCredentials = true;
       }
     });
 
-  }
-  logout() {
-    this.authService.logout();
-    this.setMessage();
   }
 }
