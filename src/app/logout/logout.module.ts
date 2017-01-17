@@ -13,6 +13,6 @@ import { logoutRoutedComponents } from './logout.routing';
 export class LogoutModule { 
 
   constructor(){
-    showAsLoggedIn(localStorage.getItem('userName')); 
+    showLoggedOutProfileMenu(); 
   }  
 }

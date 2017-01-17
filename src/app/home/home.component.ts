@@ -13,9 +13,9 @@ export class HomeComponent implements OnInit {
   constructor(private http: Http, public authService: AuthService, public router: Router) { }
 
   ngOnInit() {
-    // if(this.authService.isLoggedIn()){
-    //   showAsLoggedIn(localStorage.getItem('userName'));
-    // }    
+    if(this.authService.isLoggedIn()){
+      showAsLoggedIn(localStorage.getItem('userName'));
+    }    
   }
 
   getRole() {

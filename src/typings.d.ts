@@ -4,3 +4,4 @@
 
 declare var System: any;
 declare function showAsLoggedIn(m): void;
+declare function showLoggedOutProfileMenu(): void;

@@ -6,29 +6,59 @@ function showProfileButtonAsLoggedIn() {
         type: "text"
     };
     if (mail == '') someDataObj.type = "default";// if mail field is not empty, display this button as a text, else -- as an abstract human puture              
-    //jQuery( document ).ready(function() {
-        IBMCore.common.module.masthead.showProfileLinkSignedin(someDataObj);
-    //});    
+    IBMCore.common.module.masthead.showProfileLinkSignedin(someDataObj);
 }
 
 function showLoggedInProfileMenu() {
-    //jQuery( document ).ready(function() {
-        IBMCore.common.module.masthead.editProfileMenu({
-            action: "replace",
-            links: [
-                {
-                    id: "signout",
-                    title: "Sign Out",
-                    url: "logout"
-                }]
-        });
-    //});   
+    IBMCore.common.util.config.set({
+        "masthead": {             /*don't show icon with person at all */
+            "profile": {
+                "enabled": true
+            }
+        },
+        "sbs": {
+            "enabled": false
+        },
+        footer: {
+            type: "alternate"
+        }
+    });
+
+
+    IBMCore.common.module.masthead.editProfileMenu({
+        action: "replace",
+        links: [
+            {
+                id: "signout",
+                title: "Sign Out",
+                url: "logout"
+            }]
+    });
 }
 
 function showAsLoggedIn(m) {
     mail = m;
-    //jQuery( document ).ready(function() {
-        IBMCore.common.module.masthead.subscribe('ready', 'Masthead', showProfileButtonAsLoggedIn);
-        IBMCore.common.module.masthead.subscribe('profileMenuReady', 'Masthead', showLoggedInProfileMenu);
-    //});    
+    IBMCore.common.module.masthead.subscribe('ready', 'Masthead', showProfileButtonAsLoggedIn);
+    IBMCore.common.module.masthead.subscribe('profileMenuReady', 'Masthead', showLoggedInProfileMenu);
 }
+
+function showLoggedOutProfileMenu() {
+    IBMCore.common.module.masthead.subscribe('profileMenuReady', 'Masthead', configLoggedOutProfileMenu);
+}
+
+function configLoggedOutProfileMenu() {
+    IBMCore.common.util.config.set({
+        "masthead": {             /*don't show icon with person at all */
+            "profile": {
+                "enabled": false
+            }
+        },
+        "sbs": {
+            "enabled": false
+        },
+        footer: {
+            type: "alternate"
+        }
+    });
+}
+
