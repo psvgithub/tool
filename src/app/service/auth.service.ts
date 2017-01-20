@@ -31,7 +31,7 @@ export class AuthService {
                 if (res.authenticate) {
                     localStorage.setItem('auth_token', res.auth_token);
                     localStorage.setItem('userName', res.userName);                    
-                    this.loggedIn = true;                                       
+                    this.loggedIn = true;
                     return res.authenticate;
                 } else {
                     this.loggedIn = false;

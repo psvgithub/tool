@@ -17,24 +17,11 @@ export class AppComponent implements OnInit {
     this.router.navigate(['login']);
   }
 
-  // ngAfterContentInit() {
-  //   if(this.authService.isLoggedIn()){
-  //     showAsLoggedIn(localStorage.getItem('userName'));
-  //   }  
-  // }
-ngOnInit(){
+  ngOnInit(){
   setTimeout(() => {
             // run jQuery stuff here
       }, 0);
-    if(this.authService.isLoggedIn()){
-      showAsLoggedIn(localStorage.getItem('userName'));
-    } 
-}
-
-
-  ngAfterViewInit() {
-    // if(this.authService.isLoggedIn()){
-    //   showAsLoggedIn(localStorage.getItem('userName'));
-    // }
   }
 }
+
+

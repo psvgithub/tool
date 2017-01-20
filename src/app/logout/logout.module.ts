@@ -10,9 +10,4 @@ import { logoutRoutedComponents } from './logout.routing';
   ],
   declarations: [LogoutComponent]
 })
-export class LogoutModule { 
-
-  constructor(){
-    showLoggedOutProfileMenu(); 
-  }  
-}
+export class LogoutModule {}

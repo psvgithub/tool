@@ -8,14 +8,17 @@ import { Routes, RouterModule, Router } from '@angular/router';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit{
 
   constructor(private http: Http, public authService: AuthService, public router: Router) { }
-
-  ngOnInit() {
-    if(this.authService.isLoggedIn()){
-      showAsLoggedIn(localStorage.getItem('userName'));
-    }    
+  
+  ngOnInit(){
+        if(this.authService.isLoggedIn()){
+        showAsLoggedIn(localStorage.getItem('userName'));
+      } 
+      else {
+        showLoggedOutProfileMenu();
+      }
   }
 
   getRole() {

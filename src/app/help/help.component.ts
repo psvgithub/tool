@@ -10,9 +10,12 @@ export class HelpComponent implements OnInit{
 
   constructor(public authService: AuthService) { }
 
-  ngOnInit() {
-    // if(this.authService.isLoggedIn()){
-    //   showAsLoggedIn(localStorage.getItem('userName'));
-    // }    
+  ngOnInit(){
+        if(this.authService.isLoggedIn()){
+        showAsLoggedIn(localStorage.getItem('userName'));
+      } 
+      else {
+        showLoggedOutProfileMenu();
+      }
   }
 }

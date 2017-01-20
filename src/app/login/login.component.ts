@@ -10,7 +10,7 @@ import 'rxjs/add/operator/toPromise';
   styleUrls: ['./login.component.css']
 })
 
-export class LoginComponent implements OnInit{
+export class LoginComponent{
   username: string;
   password: string;
   tryingToLogInMessage: string;
@@ -43,10 +43,5 @@ export class LoginComponent implements OnInit{
       }
     });
 
-  }
-
-  ngOnInit() {
-    this.authService.logout();
-    showLoggedOutProfileMenu();
   }
 }

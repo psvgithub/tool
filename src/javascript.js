@@ -1,4 +1,4 @@
-var mail = "";
+var mail = '';
 function showProfileButtonAsLoggedIn() {
     someDataObj = {
         linkContents: mail,
@@ -13,7 +13,7 @@ function showLoggedInProfileMenu() {
     IBMCore.common.util.config.set({
         "masthead": {             /*don't show icon with person at all */
             "profile": {
-                "enabled": true
+                "enabled": false
             }
         },
         "sbs": {
@@ -23,7 +23,6 @@ function showLoggedInProfileMenu() {
             type: "alternate"
         }
     });
-
 
     IBMCore.common.module.masthead.editProfileMenu({
         action: "replace",
@@ -36,14 +35,19 @@ function showLoggedInProfileMenu() {
     });
 }
 
+
+
 function showAsLoggedIn(m) {
     mail = m;
-    IBMCore.common.module.masthead.subscribe('ready', 'Masthead', showProfileButtonAsLoggedIn);
-    IBMCore.common.module.masthead.subscribe('profileMenuReady', 'Masthead', showLoggedInProfileMenu);
+    
+    IBMCore.common.module.masthead.subscribe('profileMenuReady', 'Masthead', showLoggedInProfileMenu).runAsap();
+    IBMCore.common.module.masthead.subscribe('ready', 'Masthead', showProfileButtonAsLoggedIn).runAsap();
 }
 
 function showLoggedOutProfileMenu() {
-    IBMCore.common.module.masthead.subscribe('profileMenuReady', 'Masthead', configLoggedOutProfileMenu);
+    
+    IBMCore.common.module.masthead.subscribe('profileMenuReady', 'Masthead', configLoggedOutProfileMenu).runAsap();
+    IBMCore.common.module.masthead.subscribe('ready', 'Masthead', showProfileButtonAsLoggedIn).runAsap();
 }
 
 function configLoggedOutProfileMenu() {
