@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../service/auth.service';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/toPromise';
+import 'rxjs/add/operator/catch';
 
 @Component({
   selector: 'app-login',
@@ -16,32 +17,37 @@ export class LoginComponent{
   tryingToLogInMessage: string;
   isBadCredentials: boolean;
   badCredentialsMessage = 'Bad Credentials';
+  errorMessage: string;
 
   constructor(public authService: AuthService, public router: Router) {
     this.isBadCredentials = false;
-    this.setMessage();    
   }
 
-  setMessage() {
-    this.tryingToLogInMessage = 'Logged ' + (this.authService.isLoggedIn() ? 'in' : 'out');
+  showSpinner() {
+    console.log('showSpinner()');
   }
+
+  hideSpinner(){
+    console.log('hideSpinner()');
+  }
+
   login() {
-    this.tryingToLogInMessage = 'Trying to log in ...';
-    this.authService.login(this.username, this.password).subscribe(() => {
-      this.setMessage();
-      if (this.authService.isLoggedIn()) {
-        // Get the redirect URL from our auth service
-        // If no redirect has been set, use the default
-        let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/home';
-        // Redirect the user
-        this.router.navigate([redirect]);
-        this.isBadCredentials = false;
-        showAsLoggedIn(localStorage.getItem('userName'));                 
-      }
-      if (!this.authService.isLoggedIn()) {
-        this.isBadCredentials = true;
-      }
-    });
-
+    this.showSpinner();
+    this.authService.login(this.username, this.password).subscribe(
+      success => {
+              this.hideSpinner();
+              if (success) {                
+                showAsLoggedIn(localStorage.getItem('userName'));  
+                let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/home';
+                this.router.navigate([redirect]);
+              } else {
+                this.errorMessage = this.authService.getErrorMessage();
+              }
+            },
+       error => {
+         this.hideSpinner();
+         this.errorMessage = <any> error
+        }
+    );
   }
 }
