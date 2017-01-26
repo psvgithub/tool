@@ -1,5 +1,6 @@
 import { Component, OnInit, AfterContentInit } from '@angular/core';
 import { AuthService } from '../service/auth.service'; 
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-help',
@@ -8,11 +9,11 @@ import { AuthService } from '../service/auth.service';
 })
 export class HelpComponent implements OnInit{
 
-  constructor(public authService: AuthService) { }
+  constructor(public authService: AuthService, public userService: UserService) { }
 
   ngOnInit(){
         if(this.authService.isLoggedIn()){
-        showAsLoggedIn(localStorage.getItem('userName'));
+        showAsLoggedIn(this.userService.getUserName());
       } 
       else {
         showLoggedOutProfileMenu();

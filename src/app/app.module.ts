@@ -10,6 +10,7 @@ import { HelpModule } from './help/help.module';
 import { appRouting, appRoutingProviders }  from './app-routing.module';
 import { LoginComponent }       from './login/login.component';
 import { LogoutModule } from './logout/logout.module';
+import { ServiceProviderModule, serviceProvider } from './services/service-provider/service-provider.module';
 
 @NgModule({
   declarations: [
@@ -24,8 +25,9 @@ import { LogoutModule } from './logout/logout.module';
     HelpModule,
     LogoutModule,
     appRouting,
+    ServiceProviderModule
   ],
-  providers: [appRoutingProviders],
+  providers: [appRoutingProviders, serviceProvider],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -2,6 +2,7 @@ import { Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../service/auth.service';
 import { Observable } from 'rxjs/Observable';
+import { UserService } from '../services/user.service';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/catch';
 
@@ -14,14 +15,10 @@ import 'rxjs/add/operator/catch';
 export class LoginComponent{
   username: string;
   password: string;
-  tryingToLogInMessage: string;
-  isBadCredentials: boolean;
-  badCredentialsMessage = 'Bad Credentials';
+  //tryingToLogInMessage: string;
   errorMessage: string;
 
-  constructor(public authService: AuthService, public router: Router) {
-    this.isBadCredentials = false;
-  }
+  constructor(public authService: AuthService, public router: Router, public userService: UserService) {}
 
   showSpinner() {
     console.log('showSpinner()');
@@ -37,7 +34,7 @@ export class LoginComponent{
       success => {
               this.hideSpinner();
               if (success) {                
-                showAsLoggedIn(localStorage.getItem('userName'));  
+                showAsLoggedIn(this.userService.getUserName());  
                 let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/home';
                 this.router.navigate([redirect]);
               } else {

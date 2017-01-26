@@ -2,6 +2,7 @@ import { Component, AfterViewInit, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from './service/auth.service';
 
+
 @Component({
   selector: 'tool-root',
   templateUrl: './app.component.html',
